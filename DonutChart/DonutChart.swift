@@ -23,5 +23,5 @@ struct DonutChart: View {
 }
 
 #Preview {
-    DonutChart(items: DonutChart.Item.preview())
+    DonutChart(items: Item.preview())
 }
