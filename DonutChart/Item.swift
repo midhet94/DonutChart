@@ -8,17 +8,17 @@
 import Foundation
 import SwiftUI
 
-struct Item {
-    var id: Int
-    var percentage: Int
-    var color: Color
+struct Item: Identifiable {
+    let id = UUID()
+    let percentage: Int
+    let color: Color
     
     static func preview() -> [Item] {
         [
-            .init(id: 0, percentage: 10, color: .blue),
-            .init(id: 1, percentage: 20, color: .green),
-            .init(id: 2, percentage: 30, color: .purple),
-            .init(id: 3, percentage: 50, color: .indigo)
+            .init(percentage: 10, color: .blue),
+            .init(percentage: 20, color: .green),
+            .init(percentage: 30, color: .purple),
+            .init(percentage: 50, color: .indigo)
             
         ]
     }

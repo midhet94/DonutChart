@@ -12,13 +12,20 @@ struct DonutChart: View {
     var items: [Item]
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            VStack {
+                Chart {
+                    ForEach(items) { item in
+                        SectorMark(angle: .value("Percentage", item.percentage),
+                                   innerRadius: .ratio(0.618),
+                                   angularInset: 2)
+                            .foregroundStyle(item.color)
+                    }
+                }
+            }
+            .padding()
+            .navigationTitle("Donut Chart")
         }
-        .padding()
     }
 }
 
