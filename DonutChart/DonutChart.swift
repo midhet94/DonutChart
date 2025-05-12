@@ -6,22 +6,17 @@
 //
 
 import SwiftUI
-import Charts
+
 
 struct DonutChart: View {
-    var items: [Item]
-    
     var body: some View {
+        @State var selectedItem: Item = Item.preview().first!
+        
         NavigationStack {
             VStack {
-                Chart {
-                    ForEach(items) { item in
-                        SectorMark(angle: .value("Percentage", item.percentage),
-                                   innerRadius: .ratio(0.618),
-                                   angularInset: 2)
-                            .foregroundStyle(item.color)
-                    }
-                }
+                ChartView(selectedItem: $selectedItem,
+                          items: Item.preview(),
+                          outerRadius: 150)
             }
             .padding()
             .navigationTitle("Donut Chart")
@@ -30,5 +25,5 @@ struct DonutChart: View {
 }
 
 #Preview {
-    DonutChart(items: Item.preview())
+    DonutChart()
 }

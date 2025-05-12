@@ -23,3 +23,9 @@ struct Item: Identifiable {
         ]
     }
 }
+
+extension Item: Equatable {
+    static func == (lhs: Item, rhs: Item) -> Bool {
+        lhs.color == rhs.color
+    }
+}

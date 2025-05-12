@@ -11,7 +11,7 @@ import SwiftUI
 struct DonutChartApp: App {
     var body: some Scene {
         WindowGroup {
-            DonutChart(items: Item.preview())
+            DonutChart()
         }
     }
 }
