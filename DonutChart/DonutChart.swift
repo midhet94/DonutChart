@@ -13,10 +13,6 @@ struct DonutChart: View {
     
     var items: [Item]
     var outerRadius: CGFloat
-    var font: Font
-    var foregroundColor: Color
-    var backgroundColor: Color
-    var textPadding: CGFloat
     
     var body: some View {
         NavigationStack {
@@ -28,13 +24,7 @@ struct DonutChart: View {
                                    outerRadius: item == selectedItem ? .fixed(outerRadius) : 120,
                                    angularInset: 2)
                             .foregroundStyle(item.color)
-                            .annotation(position: .overlay) {
-                                Text(item.color.description.capitalized)
-                                    .font(font)
-                                    .padding(.horizontal, textPadding)
-                                    .foregroundStyle(foregroundColor)
-                                    .background(backgroundColor)
-                            }
+                            .donutChartAnnotation(text: Text(item.color.description.capitalized))
                     }
                 }
             }
@@ -44,12 +34,21 @@ struct DonutChart: View {
     }
 }
 
+extension ChartContent {
+    func donutChartAnnotation(text: Text) -> some ChartContent {
+        self
+            .annotation(position: .overlay) {
+                text
+                    .font(.body)
+                    .padding(.horizontal, 10)
+                    .foregroundStyle(.white)
+                    .background(.black)
+            }
+    }
+}
+
 #Preview {
     DonutChart(selectedItem: .constant(Item.preview().first!),
                items: Item.preview(),
-               outerRadius: 150,
-               font: .body,
-               foregroundColor: .white,
-               backgroundColor: .black,
-               textPadding: 10)
+               outerRadius: 150)
 }
