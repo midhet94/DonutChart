@@ -12,12 +12,7 @@ struct DonutChartApp: App {
     var body: some Scene {
         WindowGroup {
             DonutChart(selectedItem: .constant(Item.preview().first!),
-                       items: Item.preview(),
-                       outerRadius: 150,
-                       font: .body,
-                       foregroundColor: .white,
-                       backgroundColor: .black,
-                       textPadding: 10)
+                       items: Item.preview())
         }
     }
 }
