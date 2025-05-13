@@ -13,6 +13,10 @@ struct ChartView: View {
     
     var items: [Item]
     var outerRadius: CGFloat
+    var font: Font
+    var foregroundColor: Color
+    var backgroundColor: Color
+    var textPadding: CGFloat
     
     var body: some View {
         Chart {
@@ -22,14 +26,24 @@ struct ChartView: View {
                            outerRadius: item == selectedItem ? .fixed(outerRadius) : 120,
                            angularInset: 2)
                     .foregroundStyle(item.color)
+                    .annotation(position: .overlay) {
+                        Text(item.color.description.capitalized)
+                            .font(font)
+                            .padding(.horizontal, textPadding)
+                            .foregroundStyle(foregroundColor)
+                            .background(backgroundColor)
+                    }
             }
         }
-        .frame(width: 350, height: 350)
     }
 }
 
 #Preview {
     ChartView(selectedItem: .constant(Item.preview().first!),
               items: Item.preview(),
-              outerRadius: 150)
+              outerRadius: 150,
+              font: .body,
+              foregroundColor: .white,
+              backgroundColor: .black,
+              textPadding: 10)
 }
