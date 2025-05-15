@@ -13,6 +13,7 @@ struct DonutChartApp: App {
         WindowGroup {
             DonutChart(selectedItem: .constant(Item.preview().first!),
                        items: Item.preview())
+//            Card(content: Text("Hello World"))
         }
     }
 }

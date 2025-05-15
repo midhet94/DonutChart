@@ -22,10 +22,16 @@ struct Item: Identifiable {
             
         ]
     }
+    
+    static func previewEmpty() -> [Item] { [] }
 }
 
 extension Item: Equatable {
     static func == (lhs: Item, rhs: Item) -> Bool {
         lhs.color == rhs.color
     }
+}
+
+extension Item: Hashable {
+    
 }

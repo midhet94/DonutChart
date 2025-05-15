@@ -23,8 +23,8 @@ struct DonutChart: View {
                                    innerRadius: .ratio(0.618),
                                    outerRadius: item == selectedItem ? .fixed(donutChartOuterRadius) : 120,
                                    angularInset: 2)
-                            .foregroundStyle(item.color)
-                            .donutChartAnnotation(text: Text(item.color.description.capitalized))
+                        .foregroundStyle(item.color)
+                        .donutChartAnnotation(text: item.color.description.capitalized)
                     }
                 }
             }
@@ -41,10 +41,10 @@ extension EnvironmentValues {
 }
 
 extension ChartContent {
-    func donutChartAnnotation(text: Text) -> some ChartContent {
+    func donutChartAnnotation(text: String) -> some ChartContent {
         self
             .annotation(position: .overlay) {
-                text
+                Text(text)
                     .font(.body)
                     .padding(.horizontal, 10)
                     .foregroundStyle(.white)
